@@ -37,12 +37,12 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ml-auto">
                 <a class="navbar-brand" href="#"><b>Hello, <b sec:authentication="principal.fullName"></b></b></a>
-<!--                <li class="nav-item">-->
-<!--                    <form name="logoutForm" th:hidden="true" method="post" th:action="@{/logged_out}">-->
-<!--                        <input class="nav-link js-scroll-trigger" type="submit" value="Logout" />-->
-<!--                    </form>-->
-<!--                    <a href="javascript: logoutForm.submit();"><b>Sign Out</b></a>-->
-<!--                </li>-->
+                <li class="nav-item">
+                    <form name="logoutForm" th:hidden="true" method="post" th:action="@{/logged_out}">
+                        <input class="nav-link js-scroll-trigger" type="submit" value="Logout" />
+                    </form>
+                    <a href="javascript: logoutForm.submit();"><b>Sign Out</b></a>
+                </li>
             </ul>
         </div>
     </div>

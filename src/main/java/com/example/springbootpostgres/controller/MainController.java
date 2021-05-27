@@ -43,15 +43,6 @@ public class MainController {
 //        return "redirect:/";
 //    }
 
-    @GetMapping("/login")
-    public String showLoginPage() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            return "login.html";
-        }
-        return "redirect:/";
-    }
-
     @GetMapping("/users")
     public String listUsers(Model model) {
         List<User> listUsers = userRepository.findAll();
@@ -62,25 +53,9 @@ public class MainController {
     @PostMapping("/registered")
     public String registerFaculty(@Valid User user, BindingResult result, Model model,
                                   HttpServletRequest request, RedirectAttributes redirectAttributes) throws IOException {
-//        String c_pass = request.getParameter("c_password");
-//        String err = validationService.validatePassword(user, c_pass);
-//        if(!err.isEmpty()) {
-//            ObjectError error = new ObjectError("validationError", err);
-//            result.addError(error);
-//        }
-//        if(result.hasErrors()) {
-//            return "/register";
-//        }
-
-//        String email = request.getParameter("email");
-//        if(isPresent(email) == false) {
-//            ObjectError error = new ObjectError("invalidemail", "Email not valid");
-//            result.addError(error);
-//            redirectAttributes.addFlashAttribute("warning", "Email Invalid");
-//        }
 
         if(result.hasErrors()) {
-            redirectAttributes.addFlashAttribute("warning", "Erro Occured");
+            redirectAttributes.addFlashAttribute("warning", "Error Occured");
             return"redirect:/";
         }
 
@@ -92,6 +67,20 @@ public class MainController {
         user.setPassword(encodedPassword);
         userRepository.save(user);
         redirectAttributes.addFlashAttribute("message", "User Registered");
+        return "register";
+    }
+
+    @GetMapping("/login")
+    public String showLoginPage() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return "login.html";
+        }
         return "redirect:/";
+    }
+
+    @GetMapping("/logged_out")
+    public String loggedOut() {
+        return "/";
     }
 }
