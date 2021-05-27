@@ -100,6 +100,13 @@
                         <label for="semester">Semester</label>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input placeholder="Password" id="password" class="form-control" th:field="*{password}"
+                               required>
+                        <label for="Password">Password</label>
+                    </div>
+                </div>
                 <div class="col-md-12 text-center" th:if="${#fields.hasErrors('global')}">
                     <b><p style="color: red" th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" /></b>
                 </div>
