@@ -67,7 +67,7 @@ public class MainController {
         user.setPassword(encodedPassword);
         userRepository.save(user);
         redirectAttributes.addFlashAttribute("message", "User Registered");
-        return "register";
+        return "redirect:/";
     }
 
     @GetMapping("/login")
