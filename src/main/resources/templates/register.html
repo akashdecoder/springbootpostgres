@@ -46,7 +46,7 @@
         
         <form class="form-group text-center" style="background: aliceblue;" method="post" th:action="@{/registered}"
               th:object="${user}">
-<!--            <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>-->
+            <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>
             <div th:if="${message != null}" class="alert alert-success text-center">[[${message}]]</div>
             <div class="row g-3">
                 <div class="col-md-6">
@@ -65,10 +65,11 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input placeholder="Email" name="email" type="email" id="email" class="form-control"
-                               th:field="*{email}"
+                        <input placeholder="Email (Username)" name="username" type="email" id="username"
+                               class="form-control"
+                               th:field="*{username}"
                                required>
-                        <label for="email">Email</label>
+                        <label for="username">Email (Username)</label>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -76,6 +77,27 @@
                         <input placeholder="Contact" type="tel" id="contact" class="form-control" th:field="*{contact}"
                                required>
                         <label for="contact">Contact</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input placeholder="Branch" id="branch" class="form-control" th:field="*{branch}"
+                               required>
+                        <label for="branch">Branch</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input placeholder="Year" id="year" class="form-control" th:field="*{year}"
+                               required>
+                        <label for="year">Year</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input placeholder="Semester" id="semester" class="form-control" th:field="*{semester}"
+                               required>
+                        <label for="semester">Semester</label>
                     </div>
                 </div>
                 <div class="col-md-12 text-center" th:if="${#fields.hasErrors('global')}">
