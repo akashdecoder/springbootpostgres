@@ -88,21 +88,23 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input placeholder="Year" id="year" class="form-control" th:field="*{year}"
+                        <input placeholder="Year" id="year" type="text" class="form-control" th:field="*{year}"
                                required>
                         <label for="year">Year</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input placeholder="Semester" id="semester" class="form-control" th:field="*{semester}"
+                        <input placeholder="Semester" id="semester" type="text" class="form-control"
+                               th:field="*{semester}"
                                required>
                         <label for="semester">Semester</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input placeholder="Password" id="password" class="form-control" th:field="*{password}"
+                        <input placeholder="Password" type="password" id="password" class="form-control"
+                               th:field="*{password}"
                                required>
                         <label for="Password">Password</label>
                     </div>

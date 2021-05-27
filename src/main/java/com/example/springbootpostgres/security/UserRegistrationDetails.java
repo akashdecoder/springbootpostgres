@@ -1,5 +1,6 @@
 package com.example.springbootpostgres.security;
 
+import com.example.springbootpostgres.model.Roles;
 import com.example.springbootpostgres.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +21,13 @@ public class UserRegistrationDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<Roles> roles = user.getRoles();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        for(Roles role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getRole_name()));
+        }
+        return authorities;
     }
 
     @Override
@@ -62,9 +69,9 @@ public class UserRegistrationDetails implements UserDetails {
         this.user.setLastname(lastName);
     }
 
-//    public boolean hasRole(String roleName) {
-//        return user.hasRole(roleName);
-//    }
+    public boolean hasRole(String roleName) {
+        return user.hasRole(roleName);
+    }
 
     public String getFullName() {
         return user.getFirstname() + " " + user.getLastname();

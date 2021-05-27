@@ -28,14 +28,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new UserRegistrationDetailsService();
     }
 
-    @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder())
-                .dataSource(dataSource)
-                .usersByUsernameQuery("select username, password, enabled from users where username=?")
-                .authoritiesByUsernameQuery("select username, role from users where username=?")
-        ;
-    }
+//    @Autowired
+//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder())
+//                .dataSource(dataSource)
+//                .usersByUsernameQuery("select username, password, enabled from users where username=?")
+//                .authoritiesByUsernameQuery("select username, role from users where username=?")
+//        ;
+//    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

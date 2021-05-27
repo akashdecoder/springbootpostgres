@@ -51,13 +51,13 @@ public class User {
     @Column(nullable = false)
     private int enabled;
 
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "user_roles",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id")
-//    )
-//    private Set<Roles> roles = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Roles> roles = new HashSet<>();
 
     public User() {
     }
@@ -182,26 +182,26 @@ public class User {
         this.username = username;
     }
 
-    //    public Set<Roles> getRoles() {
-//        return roles;
-//    }
-//
-//    public void setRoles(Set<Roles> roles) {
-//        this.roles = roles;
-//    }
-//
-//    public void addRole(Roles role) {
-//        this.roles.add(role);
-//    }
+        public Set<Roles> getRoles() {
+        return roles;
+    }
 
-//    public boolean hasRole(String roleName) {
-//        Iterator<Roles> iterator = roles.iterator();
-//        while(iterator.hasNext()) {
-//            Roles roles = iterator.next();
-//            if(roles.getRole_name().equals(roleName)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+    public void setRoles(Set<Roles> roles) {
+        this.roles = roles;
+    }
+
+    public void addRole(Roles role) {
+        this.roles.add(role);
+    }
+
+    public boolean hasRole(String roleName) {
+        Iterator<Roles> iterator = roles.iterator();
+        while(iterator.hasNext()) {
+            Roles roles = iterator.next();
+            if(roles.getRole_name().equals(roleName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

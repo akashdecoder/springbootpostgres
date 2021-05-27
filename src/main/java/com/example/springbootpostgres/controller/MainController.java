@@ -1,6 +1,8 @@
 package com.example.springbootpostgres.controller;
 
+import com.example.springbootpostgres.model.Roles;
 import com.example.springbootpostgres.model.User;
+import com.example.springbootpostgres.repository.RolesRepository;
 import com.example.springbootpostgres.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -24,6 +26,9 @@ public class MainController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RolesRepository rolesRepository;
 
 
     @GetMapping("/")
@@ -61,6 +66,9 @@ public class MainController {
 
         user.setEnabled(1);
         user.setRole("ADMIN");
+        Roles roles = rolesRepository.findByRole_name("ADMIN");
+        user.addRole(roles);
+        user.setEmail(user.getUsername());
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
